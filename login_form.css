@@ -1,0 +1,12 @@
+h2{
+    text-align: center;
+}
+
+.col{
+    text-align: center;
+}
+
+.click2{  
+        grid-column: 1 / 5;
+}
+
