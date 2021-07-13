@@ -1,13 +1,23 @@
-h2{
+.grid-container{
+    text-align: center;
+    background-color: aquamarine;
+}
+
+.h2{
     text-align: center;
 }
 
-.grid-container{
-    border: 2px solid black;
+.p{
+    text-align: center;
 }
 
-.row{
+.col{
     display: flex;
-    flex-direction: row;
-    justify-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center
+}
+
+.clearfix{
+    text-align: center;
 }
