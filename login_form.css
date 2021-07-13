@@ -2,11 +2,12 @@ h2{
     text-align: center;
 }
 
-.col{
-    text-align: center;
+.grid-container{
+    border: 2px solid black;
 }
 
-.click2{  
-        grid-column: 1 / 5;
+.row{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
-
