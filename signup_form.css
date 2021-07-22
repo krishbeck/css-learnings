@@ -3,6 +3,10 @@
     background-color: aquamarine;
 }
 
+.form{
+    border:1px solid #ccc;
+}
+
 .h1{
     text-align: center;
 }
