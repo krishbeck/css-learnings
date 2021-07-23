@@ -7,6 +7,8 @@ const validateForm = () => {
     const password = document.getElementById("psw");
     const repeatPassword = document.getElementById("psw-repeat");
 
+    event.preventDefault();
+
     // 1. verify email
     verifyEmail(emailElement);
 
