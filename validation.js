@@ -36,7 +36,8 @@ function verifyEmail(emailElement) {
 
     const isEmailInCorrectFormat = (email) => {
         // check if email is incorrect format using regex
-        return false; // TODO :: add logic
+        let regexEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return regexEmail.test(email);
     }
 
     let isError = false;
