@@ -4,8 +4,8 @@
 const validateForm = () => {
     const form = document.getElementById("registrationForm");
     const emailElement = document.getElementById("email");
-    const password = document.getElementById("psw");
-    const repeatPassword = document.getElementById("psw-repeat");
+    const passElement = document.getElementById("psw");
+    const repeatPassElement = document.getElementById("psw-repeat");
 
     event.preventDefault();
 
@@ -14,9 +14,11 @@ const validateForm = () => {
 
     // TODO :: 2. verify password
     // 2. a. verify password is at least 6 character long
+    verifyPassword(passElement);
     // 2. b. verify password has at least a number and capital and symbol
-    // 2. c. verify both password are same
 
+    // 2. c. verify both password are same
+    verifyRepeatPassword(repeatPassElement);
     // TODO :: 3. prevent default, if error
 
     // TODO :: 4. success message, if inputs are okay
@@ -57,3 +59,37 @@ function verifyEmail(emailElement) {
     }
 }
 
+/**
+ * Verify password
+ *
+ * @param passElement
+ */
+function verifyPassword(passElement) {
+    const password = passElement.value.trim()
+
+    const isPasswordEmpty = (password) => password === "";
+
+    const isPasswordStrengthCorrect = (password)=>{
+
+        // check if password is of correct format using regex
+        let regexPass = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
+        return regexPass.test(password);
+    }
+
+    let isError = false;
+    let errorMessage = "";
+
+    if (isPasswordEmpty(password)) {                                    // 1. Check if password is empty
+        isError = true;
+        errorMessage = "Password can not be blank"
+    } else if (!isPasswordStrengthCorrect(password)) {                 //2. Check if password has max length and upper and lower character
+        isError = true;
+        errorMessage = "Password should be at least 8 characters long with one upper and one lower letter and one number"
+    }
+
+    if (isError) {
+        const emailErrorDiv = document.getElementById("passError");
+        emailErrorDiv.innerText = errorMessage;
+    }
+
+}
