@@ -22,6 +22,10 @@
     align-items: center
 }
 
+.input remember{
+    margin-bottom:15px;
+}
+
 .clearfix{
     text-align: center;
 }

@@ -18,7 +18,7 @@ const validateForm = () => {
     // 2. b. verify password has at least a number and capital and symbol
 
     // 2. c. verify both password are same
-    verifyRepeatPassword(repeatPassElement);
+    verifyRepeatPassword(passElement,repeatPassElement);
     // TODO :: 3. prevent default, if error
 
     // TODO :: 4. success message, if inputs are okay
@@ -92,4 +92,31 @@ function verifyPassword(passElement) {
         emailErrorDiv.innerText = errorMessage;
     }
 
+}
+
+function verifyRepeatPassword(passElement,repeatPassElement) {
+    const repeatPassword = repeatPassElement.value.trim();
+    const password = passElement.value.trim();
+
+
+    const isRepeatPasswordEmpty = (repeatPassword)=>{
+        return repeatPassword ==="";
+    }
+
+    let isError = false;
+    let errorMessage = "";
+
+    if(isRepeatPasswordEmpty(repeatPassword)){                        // 1. Check if repeat password is empty
+        isError = true;
+        errorMessage = "Repeat Password can not be blank"
+    }
+    else if (repeatPassword!=password){                               //2. Check if repeat password is equal to password
+        isError = true;
+        errorMessage = "Repeat password is not same as password"
+    }
+
+    if (isError) {
+        const emailErrorDiv = document.getElementById("repeatPassError");
+        emailErrorDiv.innerText = errorMessage;
+    }
 }
