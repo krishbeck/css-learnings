@@ -20,12 +20,19 @@ const validateForm = () => {
     // 2. c. verify both password are same
     const isRepeatPasswordSuccess = verifyRepeatPassword(passElement,repeatPassElement);
 
-    // hides error after inputs are correct
-    hideAllErrors();
-
     // Form successful message if all fields are successful
+    // hides error after inputs are correct
     const isSuccess = isEmailSuccess && isPasswordSuccess && isRepeatPasswordSuccess;
-    if(isSuccess){
+    if(isEmailSuccess){
+        document.getElementById("emailError").style.display="none";
+    }
+    else if(isPasswordSuccess) {
+        document.getElementById("passError").style.display="none";
+    }
+    else if(isRepeatPasswordSuccess) {
+        document.getElementById("repeatPassError").style.display="none";
+    }
+    else if(isSuccess){
         const formSuccessDiv = document.getElementById("formSuccessMsg");
         formSuccessDiv.innerText = "Your form has been successfully submitted!!";
     }
@@ -132,12 +139,3 @@ function verifyRepeatPassword(passElement,repeatPassElement) {
     return !isError;
 }
 
-/**
- * Hides all error after correct input
- *
- */
-function hideAllErrors(){
-    document.getElementById("emailError").style.display="none";
-    document.getElementById("passError").style.display="none";
-    document.getElementById("repeatPassError").style.display="none";
-}
