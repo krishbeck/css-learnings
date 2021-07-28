@@ -2,6 +2,7 @@
  * Validates form
  */
 const validateForm = () => {
+
     const form = document.getElementById("registrationForm");
     const emailElement = document.getElementById("email");
     const passElement = document.getElementById("psw");
@@ -10,19 +11,24 @@ const validateForm = () => {
     event.preventDefault();
 
     // 1. verify email
-    verifyEmail(emailElement);
+    const isEmailSuccess = verifyEmail(emailElement);
 
     // 2. a. verify password is at least 6 character long
-    verifyPassword(passElement);
     // 2. b. verify password has at least a number and capital and symbol
+    const isPasswordSuccess = verifyPassword(passElement);
 
     // 2. c. verify both password are same
-    verifyRepeatPassword(passElement,repeatPassElement);
+    const isRepeatPasswordSuccess = verifyRepeatPassword(passElement,repeatPassElement);
 
-    // TODO :: 3. prevent default, if error
+    // hides error after inputs are correct
+    hideAllErrors();
 
-    // TODO :: 4. success message, if inputs are okay
-
+    // Form successful message if all fields are successful
+    const isSuccess = isEmailSuccess && isPasswordSuccess && isRepeatPasswordSuccess;
+    if(isSuccess){
+        const formSuccessDiv = document.getElementById("formSuccessMsg");
+        formSuccessDiv.innerText = "Your form has been successfully submitted!!";
+    }
 }
 
 /**
@@ -49,15 +55,16 @@ function verifyEmail(emailElement) {
     if (isEmailEmpty(email)) {                              // 1. check if empty
         isError = true;
         errorMessage = "Email can not be blank";
-    } else if (!isEmailInCorrectFormat(email)) {            // 2. check if correct email format
+    }
+    else if (!isEmailInCorrectFormat(email)) {            // 2. check if correct email format
         isError = true;
         errorMessage = "Email is not in correct format";
     }
-
     if (isError) {
         const emailErrorDiv = document.getElementById("emailError");
         emailErrorDiv.innerText = errorMessage;
     }
+    return !isError;
 }
 
 /**
@@ -90,7 +97,7 @@ function verifyPassword(passElement) {
         const emailErrorDiv = document.getElementById("passError");
         emailErrorDiv.innerText = errorMessage;
     }
-
+    return !isError;
 }
 
 /**
@@ -122,7 +129,15 @@ function verifyRepeatPassword(passElement,repeatPassElement) {
         const emailErrorDiv = document.getElementById("repeatPassError");
         emailErrorDiv.innerText = errorMessage;
     }
-
+    return !isError;
 }
 
-
+/**
+ * Hides all error after correct input
+ *
+ */
+function hideAllErrors(){
+    document.getElementById("emailError").style.display="none";
+    document.getElementById("passError").style.display="none";
+    document.getElementById("repeatPassError").style.display="none";
+}
