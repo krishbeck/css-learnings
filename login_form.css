@@ -1,0 +1,23 @@
+.grid-container{
+    text-align: center;
+    background-color: aquamarine;
+}
+
+.h2{
+    text-align: center;
+}
+
+.p{
+    text-align: center;
+}
+
+.col{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center
+}
+
+.clearfix{
+    text-align: center;
+}

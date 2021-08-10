@@ -1,9 +1,28 @@
-<div class="log-form">
-  <h2>Login to your account</h2>
-  <form>
-    <input type="text" title="username" placeholder="username" />
-    <input type="password" title="username" placeholder="password" />
-    <button type="submit" class="btn">Login</button>
-    <a class="forgot" href="#">Forgot Username?</a>
-  </form>
-</div><!--end log form -->
+<html>
+  <head>
+    <title>Krishna CSS learnings</title>
+    <link rel="stylesheet" href="login_form.css" />
+  </head>
+
+  <body>
+    <div class='grid-container'>
+      <h2>Login to your account</h2>
+      <form class="row">
+        <div class="col">
+          <label for="email"><b>Email</b></label>
+          <input type="text" placeholder="Enter Email" name="email" required />
+          <label for="pass"><b>Password</b></label>
+          <input type="password" placeholder="Enter Password" name="psw" required />
+          <br>
+          <label>
+          <button type="submit" class="btn">Login</button>
+          <button type="submit" class="btn">Sign Up</button>
+          </label>
+        </div>
+        <div class="click2">
+          <a href="#">Forgot Password?</a>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
